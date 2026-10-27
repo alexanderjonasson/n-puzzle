@@ -1,0 +1,485 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 980px;
+  padding: 36px;
+  background: #111c2e;
+  border: 1px solid #263852;
+  border-radius: 26px;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(64, 118, 220, 0.08);
+  color: #eaf4ff;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #8ba4c6;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.game-container h1 {
+  margin: 0;
+  color: #f2f7ff;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+}
+
+.game-description {
+  margin: 10px 0 0;
+  color: #a4b5cc;
+  font-size: 0.95rem;
+}
+
+.header-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  background: #1c2c45;
+  border: 1px solid #30496d;
+  border-radius: 16px;
+  font-size: 1.8rem;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.board-section,
+.control-panel {
+  min-width: 0;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.select-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.select-field label {
+  color: #a9bad2;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.select-field select {
+  width: 100%;
+  padding: 14px 16px;
+  background: #1b2a42;
+  border: 1px solid #304665;
+  border-radius: 12px;
+  color: #eaf4ff;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.select-field select:focus-visible {
+  outline: 2px solid #76aaff;
+  outline-offset: 3px;
+}
+
+.game-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px;
+  background: #1b2a42;
+  border: 1px solid #293d59;
+  border-radius: 13px;
+}
+
+.stat-label {
+  color: #8ba4c6;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.stat-card strong {
+  color: #f0f6ff;
+  font-size: 1.2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-card .status-text {
+  color: #8cc9ff;
+  font-size: 1rem;
+}
+
+.stat-card .status-won {
+  color: #8de5bb;
+}
+
+.puzzle-board {
+  --gap: 10px;
+  --padding: 12px;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--size), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--size), minmax(0, 1fr));
+  gap: var(--gap);
+  padding: var(--padding);
+  width: 100%;
+  aspect-ratio: 1;
+  background: #0c1728;
+  border: 1px solid #293c57;
+  border-radius: 20px;
+  box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition:
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.puzzle-board.board-won {
+  border-color: #438e78;
+  box-shadow:
+    inset 0 4px 15px rgba(0, 0, 0, 0.2),
+    0 0 32px rgba(72, 205, 151, 0.13);
+}
+
+.tile {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  transform: translate(
+    calc(var(--col) * (100% + var(--gap))),
+    calc(var(--row) * (100% + var(--gap)))
+  );
+
+  background: linear-gradient(145deg, #304e76, #203653);
+
+  border: 1px solid #42658f;
+  border-radius: 15px;
+  color: #f0f7ff;
+  font-family: inherit;
+  font-size: calc(2.2rem * 3 / var(--size));
+  font-weight: 700;
+  cursor: default;
+
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.tile-movable {
+  cursor: pointer;
+  border-color: #5b8dc5;
+
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(95, 161, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.tile-movable:hover {
+  background: linear-gradient(145deg, #416ba0, #29476f);
+
+  border-color: #86baff;
+
+  box-shadow:
+    0 7px 20px rgba(46, 122, 236, 0.28),
+    0 0 0 2px rgba(95, 161, 255, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.tile-movable:active {
+  filter: brightness(1.15);
+}
+
+.tile:focus-visible {
+  outline: 3px solid #80b8ff;
+  outline-offset: 2px;
+  z-index: 2;
+}
+
+.tile:disabled {
+  opacity: 1;
+}
+
+.board-won .tile {
+  animation: tileWinGlow 650ms ease both;
+  animation-delay: calc(var(--tile-index) * 55ms);
+}
+
+@keyframes tileWinGlow {
+  0% {
+    border-color: #42658f;
+    filter: brightness(1);
+  }
+
+  50% {
+    border-color: #8de5bb;
+    filter: brightness(1.3);
+    box-shadow: 0 0 20px rgba(93, 229, 174, 0.4);
+  }
+
+  100% {
+    border-color: #42658f;
+    filter: brightness(1);
+  }
+}
+
+.shuffle-button {
+  width: 100%;
+  padding: 16px 20px;
+
+  background: linear-gradient(135deg, #4b87ee, #3268d2);
+
+  border: 1px solid #6699f3;
+  border-radius: 13px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 7px 20px rgba(48, 104, 210, 0.25);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.shuffle-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+
+  box-shadow: 0 10px 25px rgba(48, 104, 210, 0.35);
+}
+
+.shuffle-button:active {
+  transform: translateY(0);
+}
+
+.shuffle-button:focus-visible {
+  outline: 3px solid #80b8ff;
+  outline-offset: 3px;
+}
+
+.game-tip {
+  padding: 18px;
+  background: #17263c;
+  border: 1px solid #293d59;
+  border-radius: 14px;
+}
+
+.tip-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #8ba4c6;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.game-tip p {
+  margin: 0;
+  color: #a4b5cc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.win-message {
+  margin-top: 20px;
+  padding: 22px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(35, 130, 95, 0.19),
+    rgba(22, 81, 79, 0.2)
+  );
+
+  border: 1px solid #357e67;
+  border-radius: 14px;
+  text-align: center;
+  animation: winAppear 500ms ease both;
+}
+
+.win-icon {
+  margin-bottom: 6px;
+  font-size: 1.8rem;
+  animation: sparkle 650ms ease both;
+}
+
+.win-message h2 {
+  margin: 0 0 8px;
+  color: #a3f0cb;
+  font-size: 1.4rem;
+}
+
+.win-message p {
+  margin: 0;
+  color: #b5d9cb;
+  line-height: 1.5;
+}
+
+.win-message strong {
+  color: #d5ffea;
+}
+
+@keyframes winAppear {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sparkle {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-20deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@media (max-width: 750px) {
+  .app {
+    padding: 24px 12px;
+  }
+
+  .game-container {
+    max-width: 480px;
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .game-header {
+    margin-bottom: 24px;
+  }
+
+  .game-container h1 {
+    font-size: 2rem;
+  }
+
+  .header-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .control-panel {
+    gap: 16px;
+  }
+
+  .game-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .stat-card {
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 5px;
+  }
+
+  .stat-card strong {
+    font-size: 1rem;
+  }
+
+  .stat-card .status-text {
+    font-size: 0.85rem;
+  }
+
+  .puzzle-board {
+    --gap: 7px;
+    --padding: 8px;
+  }
+
+  .tile {
+    border-radius: 11px;
+    font-size: calc(1.6rem * 3 / var(--size));
+  }
+
+  .game-tip {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .board-won .tile,
+  .shuffle-button,
+  .win-message,
+  .win-icon,
+  .puzzle-board {
+    transition: none;
+    animation: none;
+  }
+}

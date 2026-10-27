@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+
+  background: radial-gradient(
+    circle at 50% 10%,
+    #203756 0%,
+    #101b2e 45%,
+    #080e19 100%
+  );
+}
+
+button,
+select {
+  font-family: inherit;
+}
