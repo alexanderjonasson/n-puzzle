@@ -4,6 +4,8 @@ A sliding puzzle built with React and Vite. Click the tiles next to the empty sq
 
 By [Alexander Jonasson](https://github.com/alexanderjonasson).
 
+**Live:** [n-puzzle-seven.vercel.app](https://n-puzzle-seven.vercel.app)
+
 ## Features
 
 - Three board sizes and three difficulty levels
